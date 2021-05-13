@@ -1,0 +1,144 @@
+@charset "ISO-8859-1";
+*{
+  box-sizing: border-box;
+}
+
+form-body {
+  background-color: #364F6B;
+}
+
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+#loginForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+  display:block;
+}
+
+#innerForms{
+	background-color: #aaaaaa;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+  display:block;
+}
+
+h1 {
+  text-align: center;  
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+select {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+
+}
+.my-select{
+	position:relative;
+	font-family:;
+}
+
+.my-select select{
+	display:none;
+}
+
+select-selected {
+	background-color:#364F6B;
+}
+
+
+
+select-selected:after{
+	position:absolute;
+	content:"";
+	top:14px;
+	right:10px;
+	width:0;
+	height:0;
+	border:6px solid transparent transparent transparent;
+	
+}
+
+select-selected.select-arrow-active:after{
+	border-color:transparent transparent #fff transparent;
+	top:7px;
+
+}
+
+
+/* Mark input boxes that gets an error on validation: */
+.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab{
+  display: none;
+}
+
+
+button {
+  background-color: #364F6B;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #364F6B;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #364F6B;
+}
+
+.error{
+color:red;
+}

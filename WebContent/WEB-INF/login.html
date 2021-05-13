@@ -1,0 +1,274 @@
+<html>
+<head>
+    <title></title>
+       <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  
+  <link rel="stylesheet" href="my_style.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+   
+</head>
+</html>
+<body>
+  
+ <nav class="navbar navbar-inverse nav-bar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">MY BANK</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>   
+     
+   <div class="row">
+    <div class="col-sm-4">
+     
+    </div>
+    <div class="col-sm-4"> 
+          
+          <div id="login">
+    <div >
+	<h1 align="center" class="heading">Login</h1><hr>
+		
+	</div>
+	
+	<div align="center" style="width: 100%">
+	<table class="table" style="width: 100%">
+		<form method="post" action="./login" id="loginForm">
+		    <tr>
+		        <td>User Name:</td>
+		        <td><input type="text" name="userId"></td>
+		    </tr>
+		    <tr>
+		        <td>Pin:</td>
+		        <td><input type="number" name="pin"></td>
+		    </tr>
+		    
+		    <tr>
+				<td>Admin Login</td>
+				<td> Yes: <input type="radio" value="1" name="adminLogin">
+				No: <input type="radio" value="0" name="adminLogin" checked></td>
+			</tr>
+		    
+		    <tr>
+		        <td></td>
+		        <td><input type="submit" class="btn" name="Login"></td>
+		    </tr>
+		    
+			
+		</form>
+		
+		<tr>
+		        
+		        <td><button class="btn" id="registerForm">Register</button></td>
+		        <td></td>
+		    </tr>
+	</table>
+
+
+    </div>
+</div>
+
+<div id="register">
+    <div>
+	<h1 align="center" class="heading">Register</h1><hr>
+	
+		<span class="registerFormMessage"></span>
+	</div>
+	
+	<div align="center">
+	<table class="table">
+		<form method="post" action="" id="registerForm">
+			
+			<tr>
+				<td>Account Type:</td>
+				<td><select name="accountType">
+					<option>..Select Account Type..</option>
+					<option>Saving</option>
+					<option>Current</option>
+				</select><br><span class="error" id="fName" ></span>
+				</td>
+
+			</tr>
+			<tr>
+				<td>First Name:</td>
+				<td><input class="input-box" type="text" name="fName"value="" required><br><span class="error" id="fName"></span></td>
+
+			</tr>
+
+			<tr>
+				<td>Last Name:</td>
+
+				<td><input type="text" name="lName"  value="" required><br><span class="error" id="lName"></span></td>
+			</tr>
+			
+			<tr>
+				<td>Street:</td>
+				<td><input type="text" name="street"  value="" required><br><span class="error" id="street"></span></td>
+
+			</tr>
+
+			<tr>
+				<td>City:</td>
+
+				<td><input type="text" name="city" value="" required> <br><span class="error" id="city"></span></td>
+			</tr>
+
+			<tr>
+				<td>State:</td>
+				<td><input type="text" name="state" value="" required><br><span class="error" id="state"></span></td>
+
+			</tr>
+
+			<tr>
+				<td>Pin:</td>
+
+				<td><input type="number" name="pinCode" value="" required><br><span class="error" id="pinCode"></span></td>
+			</tr>
+			
+			<tr>
+				<td>Contact:</td>
+				<td><input type="number" name="contact" value="" required><br><span class="error" id="contact"></span></td>
+
+			</tr>
+
+			<tr>
+				<td>Email:</td>
+
+				<td><input type="email" name="email" value="" required><br><span class="error" id="email"></span></td>
+			</tr>
+			
+			<tr>
+				<td>Begin Balance:</td>
+
+				<td><input type="number" name="beginBalance" value="" required><br><span class="error" id="balance"></span></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit"  value="Register" class="btn"></td>
+			</tr>
+			
+			
+		</form>
+		
+		
+	</table>
+	<table id="otp">
+	<form id="sendOTP">
+	<tr>
+		<td>Enter OTP</td>
+		<td><input type="number" name="otp"></td>
+	</tr>
+	<tr>
+		<td><input type="submit" value="Verify"></td>
+		<td></td>
+	</tr>
+	</form>
+	</table>
+	
+</div>
+</div>
+          
+    </div>
+    <div class="col-sm-4">
+      
+    </div>
+  </div>
+<br> 
+          
+
+    
+    <script>
+    
+    $(document).ready(function(){
+            $('#register').hide();
+            $('#otp').hide();
+            $('#login').show();  
+            
+                      });
+        
+       $('#registerForm').click(function(){
+           $('#login').hide();
+           $('#register').show();
+       });
+        
+        $('#loginForm').click(function(){
+          
+             $('#regiser').hide();
+           $('#login').show();
+            
+       });
+        
+        
+
+
+$(document).on("submit", "#loginForm", function() { 
+    $.post("http://localhost:8080/banking_system/login", function(responseText) {   
+             
+    	console.log("login successful");
+       
+    });
+}); 
+        
+     
+$(document).ready(function(){
+    
+	console.log('in submit called');
+    $('#registerForm').on('submit', function(event){
+        event.preventDefault();
+        
+        var f = $(this).serialize();
+        
+        $.ajax({
+            url: "http://localhost:8080/banking_system/register",
+            data: f,
+            type: 'POST',
+            success: function (data, textState, jqXHR){
+                console.log("success....");
+                $('.registerFormMessage').text(data);
+                if(data === 'Otp sent'){
+                	console.log('otp recieved');
+                	$('#register').hide();
+                	$('#otp').show();
+                	
+                }
+                else
+                {
+                	console.log('otp not recieved');
+                }
+                	
+                
+            },
+            error: function (jqXHR, textStatus, errorThrown){
+                
+                console.log('error...');
+            }
+        });
+        
+    });
+    
+})
+         </script>
+    
+</body>

@@ -1,0 +1,93 @@
+<html>
+<head>
+    <title></title>
+</head>
+
+<body>
+    
+    <div>
+	<h1 align="center" class="heading">Register</h1><hr>
+	
+		<span class="heading"></span>
+	</div>
+	
+	<div align="center">
+	<table class="table">
+		<form method="post" action="./register">
+			
+			<tr>
+				<td>Account Type:</td>
+				<td><select name="accountType">
+					<option>..Select Account Type..</option>
+					<option>Saving</option>
+					<option>Current</option>
+				</select><br><span class="error" id="fName" ></span>
+				</td>
+
+			</tr>
+			<tr>
+				<td>First Name:</td>
+				<td><input type="text" name="fName"value="" required><br><span class="error" id="fName"></span></td>
+
+			</tr>
+
+			<tr>
+				<td>Last Name:</td>
+
+				<td><input type="text" name="lName"  value="" required><br><span class="error" id="lName"></span></td>
+			</tr>
+			
+			<tr>
+				<td>Street:</td>
+				<td><input type="text" name="street"  value="" required><br><span class="error" id="street"></span></td>
+
+			</tr>
+
+			<tr>
+				<td>City:</td>
+
+				<td><input type="text" name="city" value="" required> <br><span class="error" id="city"></span></td>
+			</tr>
+
+			<tr>
+				<td>State:</td>
+				<td><input type="text" name="state" value="" required><br><span class="error" id="state"></span></td>
+
+			</tr>
+
+			<tr>
+				<td>Pin:</td>
+
+				<td><input type="number" name="pinCode" value="" required><br><span class="error" id="pinCode"></span></td>
+			</tr>
+			
+			<tr>
+				<td>Contact:</td>
+				<td><input type="number" name="contact" value="" required><br><span class="error" id="contact"></span></td>
+
+			</tr>
+
+			<tr>
+				<td>Email:</td>
+
+				<td><input type="email" name="email" value="" required><br><span class="error" id="email"></span></td>
+			</tr>
+			
+			<tr>
+				<td>Begin Balance:</td>
+
+				<td><input type="number" name="beginBalance" value="" required><br><span class="error" id="balance"></span></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" onSubmit="valid()" value="Register" class="btn" required></td>
+			</tr>
+		</form>
+	</table>
+
+
+</div>
+
+    
+</body>
+</html>

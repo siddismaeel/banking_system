@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <link rel="stylesheet" href="my_style.css">
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body onload="loadData()">
+
+
+<nav class="navbar navbar-inverse nav-bar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">MY BANK</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="./logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>  
+
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <!-- User information here  -->
+      <table class="table" id="userTable">
+		
+			<tr>
+				<th>Name:</th>
+				<td></td>
+				
+			</tr>
+			<tr>
+				<th>Address:</th>
+				<td> 
+				</td>
+			</tr>
+			<tr>
+				<th>Contact:</th>
+				<td></td>
+			</tr>
+			<tr>
+				<th>Email:</th>
+				<td></td>
+				
+			</tr>	
+			
+			<tr>
+				<th>Account Number:</th>
+				<td></td>
+			</tr>
+			<tr>
+				<th>Account Type:</th>
+				<td></td>
+				
+			</tr>	
+			<tr>
+				<th>Account Verified:</th>
+				<td></td>
+				
+			</tr>
+			<tr>
+				<th>Account Balance:</th>
+				<td></td>
+				
+			</tr>
+			
+			
+		
+		</table>
+    </div>
+
+    <div class="col-sm-9">
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Account ID</th>
+							<th>Account Type</th>
+							<th>Account Number</th>
+							<th>User ID</th>
+							<th>Description</th>
+							<th>Balance</th>
+							<th>Activated</th>
+							<th>Action</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+					</tbody>
+					</table>
+			</div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center" style="background-color: darkgray; color: white;">
+  <p>Copyright 2021-22</p>
+</footer>
+
+<script>
+
+/* $(document).on("submit", "#deposit", function() { 
+    $.post("http://localhost:8080/banking_system/deposit-amount", function(responseText) {   
+        $(".message").text(responseText);           
+        console.log(responseText);
+    });
+}); */
+
+
+/* $(document).ready(function() {
+    $("#deposit").submit(function(event) {
+      //event.preventDefault();
+      $.ajax({
+          type: 'POST',
+          dataType: "json",
+          url: 'http://localhost:8080/banking_system/deposit-amount',
+          success: function(data) 
+          {
+              console.log(data);
+             
+          }
+      });
+    })
+  })
+ */
+ 
+ $(document).ready(function(){
+	    
+	    $('#deposit').on('submit', function(event){
+	        event.preventDefault();
+	        
+	        var f = $(this).serialize();
+	        
+	        $.ajax({
+	            url: "http://localhost:8080/banking_system/deposit-amount",
+	            data: f,
+	            type: 'POST',
+	            success: function (data, textState, jqXHR){
+	                console.log("success deposit....");
+	                $('.withdrawMessage').text(data);  
+	                
+	            },
+	            error: function (jqXHR, textStatus, errorThrown){
+	                
+	                console.log('error...');
+	            }
+	        });
+	        
+	    });
+	    
+	}) 
+	
+	$(document).ready(function(){
+	    
+	    $('#withdraw').on('submit', function(event){
+	        event.preventDefault();
+	        
+	        var f = $(this).serialize();
+	        
+	        $.ajax({
+	            url: "http://localhost:8080/banking_system/withdraw-amount",
+	            data: f,
+	            type: 'POST',
+	            success: function (data, textState, jqXHR){
+	                console.log("success withdraw....");
+	                $('.depositMessage').text(data); 
+	                
+	            },
+	            error: function (jqXHR, textStatus, errorThrown){
+	                
+	                console.log('error...');
+	            }
+	        });
+	        
+	    });
+	    
+	}) 
+	
+function loadData(){
+	
+	 $(document).ready(function(event) {
+         
+		 console.log('load data called');
+		 
+           //event.preventDefault();
+           $.ajax({
+               type: 'GET',
+               dataType: "json",
+               url: 'http://localhost:8080/banking_system/get-admint-details',
+               success: function(data) 
+               {
+            	   console.log(data.canApprove)
+            	   var jsonStr = JSON.stringify(data);
+            	   
+                   var json = JSON.parse(jsonStr);
+					
+                   console.log("success" + json);
+                  
+               }
+           });
+         })
+      
+	
+}
+
+</script>
+</body>
+</html>

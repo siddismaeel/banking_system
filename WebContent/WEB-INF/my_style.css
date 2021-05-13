@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+    .nav-bar .active a
+            {
+                background-color:#F5F5F5; /*primary color //#364F6B*/
+                color: #1529AB;
+             }
+      
+      .nav-bar
+                {
+                    background-color: #1529AB;
+                    color:#F5F5F5;
+                }
+      
+      
+      .nav-bar li a
+                    {
+                        color:#F5F5F5; 
+                    }
+
+      .nav-bar a:hover
+                    {
+                        color:#1529AB;
+                    }
+      
+
+      nav-bar li:hover
+                    {
+                        color:#1529AB;
+                          background-color:#F5F5F5 
+                    }
+      .icon-bar 
+            {
+                   background-color:#F5F5F5 !important;
+            }
+      
+
+      .background
+        {
+            background-color:#F5F5F5;
+            width: 99%;
+        }
+      
+      .sidebar-active
+                {
+                    background-color:#1529AB;
+                }
+		.sidebar-active a
+		{
+			color: #F5F5F5;
+		}
+		
+		.sidebar li a:hover
+		{
+			background-color:#1529AB;
+			color:#F5F5F5;
+		}
+		
+		
+		
+	
+      
+      table tr :hover
+                {
+                      background-color:#1529AB;
+                      color:#F5F5F5; 
+                }
+				
+		.btn
+		{
+			background-color:#1529AB;
+            color:#F5F5F5;
+		}
+		
+		select
+		{
+			background-color:#1529AB;
+		}
+		
+		
+		
