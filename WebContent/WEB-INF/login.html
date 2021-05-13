@@ -50,30 +50,31 @@
           <div id="login">
     <div >
 	<h1 align="center" class="heading">Login</h1><hr>
+	<span class="errorMessage"></span>
 		
 	</div>
 	
 	<div align="center" style="width: 100%">
 	<table class="table" style="width: 100%">
-		<form method="post" action="./login" id="loginForm">
+		<form method="post" action="" id="loginForm">
 		    <tr>
 		        <td>User Name:</td>
-		        <td><input type="text" name="userId"></td>
+		        <td><input type="text" name="userId" id="userId" required></td>
 		    </tr>
 		    <tr>
 		        <td>Pin:</td>
-		        <td><input type="number" name="pin"></td>
+		        <td><input type="password" name="pin" id="pin" required></td>
 		    </tr>
 		    
 		    <tr>
 				<td>Admin Login</td>
-				<td> Yes: <input type="radio" value="1" name="adminLogin">
-				No: <input type="radio" value="0" name="adminLogin" checked></td>
+				<td> Yes: <input type="radio" value="1" name="adminLogin" id="adminLogin" id="adminLogin">
+				No: <input type="radio" value="0" name="adminLogin" checked id="customerLogin"></td>
 			</tr>
 		    
 		    <tr>
 		        <td></td>
-		        <td><input type="submit" class="btn" name="Login"></td>
+		        <td><input type="submit" onsubmit="login()" class="btn" name="Login"></td>
 		    </tr>
 		    
 			
@@ -222,14 +223,55 @@
         
         
 
+        
+        
+       function login(){
+    	   
+    	   var http = new XMLHttpRequest();
+    	   var x = $('#password').text();
+    	   if (isNaN(x)) 
+    	   {
+    		   console.log('not a number');
+    		   $('.errorMessage').text("Pin must be a number type 0-9");
+    	     return false;
+    	   }
+    	   
+    	   var loginType = '';
+    	   if($('#userLogin').is(':checked')) { 
+    		   loginType = $('#userLogin').val();
+    	   }
+    	   else{
+    		   loginType = $('#adminLogin').val();
+    	   }
+    	   
+    	   
+    	   
+           var url = 'http://localhost:8080/banking_system/login';
+           var params =  'userId=' + $('#userId').text() + 'pin=' + $('#pin').text() + 'adminLogin=' + loginType;
+    	   http.open('POST', url, true);
+       
 
-$(document).on("submit", "#loginForm", function() { 
+        //Send the proper header information along with the request
+        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+        http.onreadystatechange = function() {//Call a function when the state changes.
+            if(http.readyState == 4 && http.status == 200) {
+                
+            	$('.errorMessage').text(http.responseText);
+            	console.log(http.responseText);
+            	
+            }
+        }
+         http.send(params);
+       }
+
+/* $(document).on("submit", "#loginForm", function() { 
     $.post("http://localhost:8080/banking_system/login", function(responseText) {   
              
     	console.log("login successful");
        
     });
-}); 
+}); */ 
 
         
      

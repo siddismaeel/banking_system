@@ -1,6 +1,7 @@
 package com.real.bank.filter;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -34,7 +35,8 @@ public class LoginFilter implements Filter {
 			 String pin = request.getParameter("pin");
 			 String adminLogin = request.getParameter("adminLogin");
 			  HttpSession session = null;
-			  
+			  response.setContentType("text/html");
+			  PrintWriter out = response.getWriter();
 			  if(adminLogin == null)
 				  adminLogin = "";
 			  switch(adminLogin) {
@@ -53,13 +55,16 @@ public class LoginFilter implements Filter {
 					  }
 					  else
 					  {
+						  
+						  response.getWriter().write("Invalid Credentials");
 						  request.setAttribute("loginStatus", "Invalid Credentials");
 						  LOGGER.warn("Admin login attempt with wrong user id or password");
 					  }
 				  }
 				  else
 				  {
-					  request.setAttribute("userNotFound", "User does not exixts");
+					  out.print("User does not exixts");
+					  //request.setAttribute("userNotFound", "User does not exixts");
 					  LOGGER.warn("Admin login attempt with wrong user id or password");
 				  }
 				  
@@ -78,11 +83,13 @@ public class LoginFilter implements Filter {
 						  }
 						  else
 						  {
+							  out.print("Invalid Credentials");
 							  request.setAttribute("loginStatus", "Invalid Credentials");
 						  }
 					  }
 					  else
 					  {
+						  out.print("User does not exixts");
 						  request.setAttribute("userNotFound", "User does not exixts");
 					  }
 				} catch (invalidUserIdException e) {
