@@ -71,41 +71,48 @@
 		
 			<tr>
 				<th>Name:</th>
-				<td></td>
+				<td id="name"></td>
 				
 			</tr>
+			
+			<tr>
+				<th>User ID:</th>
+				<td id="userId"></td>
+				
+			</tr>
+			
 			<tr>
 				<th>Address:</th>
-				<td> 
+				<td id="address"> 
 				</td>
 			</tr>
 			<tr>
 				<th>Contact:</th>
-				<td></td>
+				<td id="contact"></td>
 			</tr>
 			<tr>
 				<th>Email:</th>
-				<td></td>
+				<td id="email"></td>
 				
 			</tr>	
 			
 			<tr>
 				<th>Account Number:</th>
-				<td></td>
+				<td id="accountNumber"></td>
 			</tr>
 			<tr>
 				<th>Account Type:</th>
-				<td></td>
+				<td id="accountType"></td>
 				
 			</tr>	
 			<tr>
 				<th>Account Verified:</th>
-				<td></td>
+				<td id="active"></td>
 				
 			</tr>
 			<tr>
 				<th>Account Balance:</th>
-				<td></td>
+				<td id="balance"></td>
 				
 			</tr>
 			
@@ -274,7 +281,8 @@
 	            type: 'POST',
 	            success: function (data, textState, jqXHR){
 	                console.log("success....");
-	                $('.depositMessage').text(data);  
+	                $('.depositMessage').text(data); 
+	                loadData();
 	                
 	            },
 	            error: function (jqXHR, textStatus, errorThrown){
@@ -301,6 +309,7 @@
 	            success: function (data, textState, jqXHR){
 	                console.log("success....");
 	                $('.withdrawtMessage').text(data); 
+	                loadData();
 	                
 	            },
 	            error: function (jqXHR, textStatus, errorThrown){
@@ -353,6 +362,7 @@
 	            success: function (data, textState, jqXHR){
 	                console.log("success....");
 	                $('.resetUserIdMessage').text(data);  
+	                loadData();
 	                
 	            },
 	            error: function (jqXHR, textStatus, errorThrown){
@@ -366,34 +376,48 @@
 	})
 	
 	
+	var xmlHttpRequest = new XMLHttpRequest();
 	
-function loadData(){
+
+
+
+function processRequest(){
 	
-	 $(document).ready(function(event) {
-         
-		 console.log('load data called');
-		 
-           //event.preventDefault();
-           $.ajax({
-               type: 'GET',
-               dataType: "json",
-               url: 'http://localhost:8080/banking_system/getUser-details',
-               success: function(data) 
-               {
-            	   console.log(data.canApprove)
-            	   var jsonStr = JSON.stringify(data);
-            	   
-                   var json = JSON.parse(jsonStr);
-					
-                   console.log("success" + json);
-                   
-                  
-               }
-           });
-         })
-      
+	if(xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200){
+		var jsonStr = eval('(' + xmlHttpRequest.responseText +')');
+		var table = document.getElementById("userTable");
+		
+		
+		console.log("firstName " + jsonStr.firstName);
+		$('#name').text(jsonStr.firstName + " " + jsonStr.lastName);
+		$("#userId").text(jsonStr.account.userId);
+		$('#address').text(jsonStr.street + " " + jsonStr.city + " " +jsonStr.state + " " + jsonStr.pin);
+		$('#contact').text(jsonStr.contact);
+		$('#email').text(jsonStr.email);
+		$('#accountNumber').text(jsonStr.account.accountNumber);
+		$('#accountType').text(jsonStr.account.accountType);
+		$('#active').text(jsonStr.account.active);
+		$('#balance').text(jsonStr.account.balance);
+		
+	}
 	
 }
+	function loadData(){
+	 
+		 console.log('load data called');
+		 
+		 
+		 xmlHttpRequest.open("Get", "http://localhost:8080/banking_system/getUser-details",true);
+		 xmlHttpRequest.onreadystatechange = processRequest;
+          
+		 xmlHttpRequest.send(null);
+      
+	}
+	 
+	
+ 
+	 
+	 
 
 </script>
 </body>

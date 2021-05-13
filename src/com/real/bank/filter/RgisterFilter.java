@@ -34,6 +34,16 @@ public class RgisterFilter implements Filter {
 	    response.setCharacterEncoding("UTF-8"); 
 		HttpSession session = ((HttpServletRequest)request).getSession();
 		
+		
+		System.out.println(((HttpServletRequest)request).getMethod());
+		if(((HttpServletRequest)request).getMethod().equalsIgnoreCase("GET"))
+		{
+			System.out.println("in chain block");
+			request.getRequestDispatcher("/login").forward(request, response);
+		}
+			
+		
+		
 		 
 		boolean isValid = false;
 		Integer step = (Integer)session.getAttribute("step");

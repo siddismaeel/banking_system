@@ -82,7 +82,7 @@
 		<tr>
 		        
 		        <td><button class="btn" id="registerForm">Register</button></td>
-		        <td></td>
+		        <td><a href="http://localhost:8080/banking_system/register">Register</a></td>
 		    </tr>
 	</table>
 
@@ -99,7 +99,7 @@
 	
 	<div align="center">
 	<table class="table">
-		<form method="post" action="" id="registerForm">
+		<form method="post" action="" id="register">
 			
 			<tr>
 				<td>Account Type:</td>
@@ -230,16 +230,17 @@ $(document).on("submit", "#loginForm", function() {
        
     });
 }); 
+
         
      
 $(document).ready(function(){
     
 	console.log('in submit called');
-    $('#registerForm').on('submit', function(event){
-        event.preventDefault();
-        
+    $('#register').on('submit', function(event){
+        //event.preventDefault();
+        console.log('in regisert on submit called');
         var f = $(this).serialize();
-        
+        console.log('form value'+f);
         $.ajax({
             url: "http://localhost:8080/banking_system/register",
             data: f,

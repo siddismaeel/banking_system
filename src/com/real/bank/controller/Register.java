@@ -91,11 +91,15 @@ public class Register extends HttpServlet {
 		//request.getRequestDispatcher("home").forward(request, response);
 		
 		
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		
-		
+		request.getRequestDispatcher("/WEB-INF/register.html").forward(request, response);
 		
 	}
+       
+       
 
 }
